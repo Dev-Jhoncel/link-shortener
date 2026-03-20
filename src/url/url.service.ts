@@ -1,26 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUrlDto } from './dto/create-url.dto';
-import { UpdateUrlDto } from './dto/update-url.dto';
+import { generateShortCode } from 'src/lib/generateShortCode';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from 'src/generated/prisma';
 
 @Injectable()
 export class UrlService {
-  create(createUrlDto: CreateUrlDto) {
-    return 'This action adds a new url';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createUrlDto: CreateUrlDto) {
+    const shortCode = generateShortCode();
+    const data: Prisma.LinkCreateInput = {
+      ...createUrlDto,
+      shortCode,
+    };
+    await this.prisma.client.link.create({ data });
+    return shortCode;
   }
 
-  findAll() {
-    return `This action returns all url`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} url`;
-  }
-
-  update(id: number, updateUrlDto: UpdateUrlDto) {
-    return `This action updates a #${id} url`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} url`;
+  async getLink(shortCode: string) {
+    return await this.prisma.client.link.findUnique({ where: { shortCode } });
   }
 }
