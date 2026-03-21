@@ -10,6 +10,12 @@ export class UrlService {
 
   async create(createUrlDto: CreateUrlDto) {
     const shortCode = generateShortCode();
+    const isExist = await this.prisma.client.link.findUnique({
+      where: { shortCode },
+    });
+    if (!isExist) {
+      return null;
+    }
     const data: Prisma.LinkCreateInput = {
       ...createUrlDto,
       shortCode,
