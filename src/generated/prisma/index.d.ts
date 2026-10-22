@@ -2085,6 +2085,7 @@ export namespace Prisma {
     shortCode: string | null
     description: string | null
     userId: string | null
+    scope: string | null
     isActive: boolean | null
     expiresAt: Date | null
     createdAt: Date | null
@@ -2098,6 +2099,7 @@ export namespace Prisma {
     shortCode: string | null
     description: string | null
     userId: string | null
+    scope: string | null
     isActive: boolean | null
     expiresAt: Date | null
     createdAt: Date | null
@@ -2111,6 +2113,7 @@ export namespace Prisma {
     shortCode: number
     description: number
     userId: number
+    scope: number
     isActive: number
     expiresAt: number
     createdAt: number
@@ -2126,6 +2129,7 @@ export namespace Prisma {
     shortCode?: true
     description?: true
     userId?: true
+    scope?: true
     isActive?: true
     expiresAt?: true
     createdAt?: true
@@ -2139,6 +2143,7 @@ export namespace Prisma {
     shortCode?: true
     description?: true
     userId?: true
+    scope?: true
     isActive?: true
     expiresAt?: true
     createdAt?: true
@@ -2152,6 +2157,7 @@ export namespace Prisma {
     shortCode?: true
     description?: true
     userId?: true
+    scope?: true
     isActive?: true
     expiresAt?: true
     createdAt?: true
@@ -2238,6 +2244,7 @@ export namespace Prisma {
     shortCode: string
     description: string | null
     userId: string | null
+    scope: string
     isActive: boolean
     expiresAt: Date | null
     createdAt: Date
@@ -2268,6 +2275,7 @@ export namespace Prisma {
     shortCode?: boolean
     description?: boolean
     userId?: boolean
+    scope?: boolean
     isActive?: boolean
     expiresAt?: boolean
     createdAt?: boolean
@@ -2286,6 +2294,7 @@ export namespace Prisma {
     shortCode?: boolean
     description?: boolean
     userId?: boolean
+    scope?: boolean
     isActive?: boolean
     expiresAt?: boolean
     createdAt?: boolean
@@ -2293,7 +2302,7 @@ export namespace Prisma {
     deletedAt?: boolean
   }
 
-  export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "shortCode" | "description" | "userId" | "isActive" | "expiresAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["link"]>
+  export type LinkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "shortCode" | "description" | "userId" | "scope" | "isActive" | "expiresAt" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["link"]>
   export type LinkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Link$userArgs<ExtArgs>
     clicks?: boolean | Link$clicksArgs<ExtArgs>
@@ -2312,6 +2321,7 @@ export namespace Prisma {
       shortCode: string
       description: string | null
       userId: string | null
+      scope: string
       isActive: boolean
       expiresAt: Date | null
       createdAt: Date
@@ -2693,6 +2703,7 @@ export namespace Prisma {
     readonly shortCode: FieldRef<"Link", 'String'>
     readonly description: FieldRef<"Link", 'String'>
     readonly userId: FieldRef<"Link", 'String'>
+    readonly scope: FieldRef<"Link", 'String'>
     readonly isActive: FieldRef<"Link", 'Boolean'>
     readonly expiresAt: FieldRef<"Link", 'DateTime'>
     readonly createdAt: FieldRef<"Link", 'DateTime'>
@@ -4087,6 +4098,7 @@ export namespace Prisma {
     shortCode: 'shortCode',
     description: 'description',
     userId: 'userId',
+    scope: 'scope',
     isActive: 'isActive',
     expiresAt: 'expiresAt',
     createdAt: 'createdAt',
@@ -4142,7 +4154,8 @@ export namespace Prisma {
     url: 'url',
     shortCode: 'shortCode',
     description: 'description',
-    userId: 'userId'
+    userId: 'userId',
+    scope: 'scope'
   };
 
   export type LinkOrderByRelevanceFieldEnum = (typeof LinkOrderByRelevanceFieldEnum)[keyof typeof LinkOrderByRelevanceFieldEnum]
@@ -4276,6 +4289,7 @@ export namespace Prisma {
     shortCode?: StringFilter<"Link"> | string
     description?: StringNullableFilter<"Link"> | string | null
     userId?: StringNullableFilter<"Link"> | string | null
+    scope?: StringFilter<"Link"> | string
     isActive?: BoolFilter<"Link"> | boolean
     expiresAt?: DateTimeNullableFilter<"Link"> | Date | string | null
     createdAt?: DateTimeFilter<"Link"> | Date | string
@@ -4291,6 +4305,7 @@ export namespace Prisma {
     shortCode?: SortOrder
     description?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    scope?: SortOrder
     isActive?: SortOrder
     expiresAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -4303,13 +4318,15 @@ export namespace Prisma {
 
   export type LinkWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    shortCode?: string
+    shortCode_scope?: LinkShortCodeScopeCompoundUniqueInput
     AND?: LinkWhereInput | LinkWhereInput[]
     OR?: LinkWhereInput[]
     NOT?: LinkWhereInput | LinkWhereInput[]
     url?: StringFilter<"Link"> | string
+    shortCode?: StringFilter<"Link"> | string
     description?: StringNullableFilter<"Link"> | string | null
     userId?: StringNullableFilter<"Link"> | string | null
+    scope?: StringFilter<"Link"> | string
     isActive?: BoolFilter<"Link"> | boolean
     expiresAt?: DateTimeNullableFilter<"Link"> | Date | string | null
     createdAt?: DateTimeFilter<"Link"> | Date | string
@@ -4317,7 +4334,7 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"Link"> | Date | string | null
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     clicks?: ClickListRelationFilter
-  }, "id" | "shortCode">
+  }, "id" | "shortCode_scope">
 
   export type LinkOrderByWithAggregationInput = {
     id?: SortOrder
@@ -4325,6 +4342,7 @@ export namespace Prisma {
     shortCode?: SortOrder
     description?: SortOrderInput | SortOrder
     userId?: SortOrderInput | SortOrder
+    scope?: SortOrder
     isActive?: SortOrder
     expiresAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
@@ -4344,6 +4362,7 @@ export namespace Prisma {
     shortCode?: StringWithAggregatesFilter<"Link"> | string
     description?: StringNullableWithAggregatesFilter<"Link"> | string | null
     userId?: StringNullableWithAggregatesFilter<"Link"> | string | null
+    scope?: StringWithAggregatesFilter<"Link"> | string
     isActive?: BoolWithAggregatesFilter<"Link"> | boolean
     expiresAt?: DateTimeNullableWithAggregatesFilter<"Link"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Link"> | Date | string
@@ -4503,6 +4522,7 @@ export namespace Prisma {
     url: string
     shortCode: string
     description?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -4518,6 +4538,7 @@ export namespace Prisma {
     shortCode: string
     description?: string | null
     userId?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -4531,6 +4552,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4546,6 +4568,7 @@ export namespace Prisma {
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4560,6 +4583,7 @@ export namespace Prisma {
     shortCode: string
     description?: string | null
     userId?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -4572,6 +4596,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4585,6 +4610,7 @@ export namespace Prisma {
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4857,12 +4883,18 @@ export namespace Prisma {
     search: string
   }
 
+  export type LinkShortCodeScopeCompoundUniqueInput = {
+    shortCode: string
+    scope: string
+  }
+
   export type LinkCountOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     shortCode?: SortOrder
     description?: SortOrder
     userId?: SortOrder
+    scope?: SortOrder
     isActive?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -4876,6 +4908,7 @@ export namespace Prisma {
     shortCode?: SortOrder
     description?: SortOrder
     userId?: SortOrder
+    scope?: SortOrder
     isActive?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -4889,6 +4922,7 @@ export namespace Prisma {
     shortCode?: SortOrder
     description?: SortOrder
     userId?: SortOrder
+    scope?: SortOrder
     isActive?: SortOrder
     expiresAt?: SortOrder
     createdAt?: SortOrder
@@ -5235,6 +5269,7 @@ export namespace Prisma {
     url: string
     shortCode: string
     description?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -5248,6 +5283,7 @@ export namespace Prisma {
     url: string
     shortCode: string
     description?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -5291,6 +5327,7 @@ export namespace Prisma {
     shortCode?: StringFilter<"Link"> | string
     description?: StringNullableFilter<"Link"> | string | null
     userId?: StringNullableFilter<"Link"> | string | null
+    scope?: StringFilter<"Link"> | string
     isActive?: BoolFilter<"Link"> | boolean
     expiresAt?: DateTimeNullableFilter<"Link"> | Date | string | null
     createdAt?: DateTimeFilter<"Link"> | Date | string
@@ -5420,6 +5457,7 @@ export namespace Prisma {
     url: string
     shortCode: string
     description?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -5434,6 +5472,7 @@ export namespace Prisma {
     shortCode: string
     description?: string | null
     userId?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -5462,6 +5501,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5476,6 +5516,7 @@ export namespace Prisma {
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5488,6 +5529,7 @@ export namespace Prisma {
     url: string
     shortCode: string
     description?: string | null
+    scope?: string
     isActive?: boolean
     expiresAt?: Date | string | null
     createdAt?: Date | string
@@ -5500,6 +5542,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5513,6 +5556,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5526,6 +5570,7 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     shortCode?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    scope?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

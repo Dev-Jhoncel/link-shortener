@@ -11,8 +11,11 @@ export class UrlController {
     return this.urlService.create(createUrlDto);
   }
 
-  @Get(':id')
-  async getLink(@Param('id') id: string) {
-    return await this.urlService.getLink(id);
+  @Get(':userId/:shortCode')
+  async getLink(
+    @Param('userId') userId: string,
+    @Param('shortCode') shortCode: string,
+  ) {
+    return await this.urlService.getLink(shortCode, userId);
   }
 }

@@ -10,9 +10,9 @@ export class AppService {
     private readonly urlService: UrlService,
   ) {}
 
-  async findByShortCode(shortCode: string): Promise<Link> {
+  async findByShortCode(shortCode: string, userId?: string): Promise<Link> {
     try {
-      const redirect_url = await this.urlService.getLink(shortCode);
+      const redirect_url = await this.urlService.getLink(shortCode, userId);
       if (!redirect_url)
         throw new NotFoundException(`Short code "${shortCode}" not found`);
       return redirect_url;

@@ -14,4 +14,14 @@ export class AppController {
     const url = await this.appService.findByShortCode(shortCode);
     res.redirect(HttpStatus.FOUND, url.url);
   }
+
+  @Get('u/:userId/:shortCode')
+  async redirectUserLink(
+    @Param('userId') userId: string,
+    @Param('shortCode') shortCode: string,
+    @Res() res: Response,
+  ): Promise<void> {
+    const url = await this.appService.findByShortCode(shortCode, userId);
+    res.redirect(HttpStatus.FOUND, url.url);
+  }
 }

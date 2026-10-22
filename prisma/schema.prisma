@@ -24,9 +24,10 @@ model User {
 model Link {
   id          String    @id @default(uuid())
   url         String    @db.Text
-  shortCode   String    @unique
+  shortCode   String
   description String?
   userId      String?
+  scope       String    @default("public")
   user        User?     @relation(fields: [userId], references: [id])
   clicks      Click[]
   isActive    Boolean   @default(true)
@@ -35,7 +36,7 @@ model Link {
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  @@index([shortCode])
+  @@unique([shortCode, scope])
   @@map("links")
 }
 
