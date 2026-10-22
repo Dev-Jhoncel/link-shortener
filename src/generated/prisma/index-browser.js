@@ -137,6 +137,7 @@ exports.Prisma.LinkScalarFieldEnum = {
   shortCode: 'shortCode',
   description: 'description',
   userId: 'userId',
+  scope: 'scope',
   isActive: 'isActive',
   expiresAt: 'expiresAt',
   createdAt: 'createdAt',
@@ -177,7 +178,8 @@ exports.Prisma.LinkOrderByRelevanceFieldEnum = {
   url: 'url',
   shortCode: 'shortCode',
   description: 'description',
-  userId: 'userId'
+  userId: 'userId',
+  scope: 'scope'
 };
 
 exports.Prisma.ClickOrderByRelevanceFieldEnum = {
